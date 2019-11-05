@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
+.Header{
+    display: grid;
+    width: 100vw;
+    min-height: 20vh;
+    grid-template-columns: 8fr 1fr;
+    background-color: #073a77;
+    
+}
+
+
+.ContenedorInput{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    & input{
+        width: 35vw;
+        height: 3vh;
+        border-radius: 1.5vh;
+        border: 2px solid white;
+        padding:1vh;
+        font-family: 'Nunito', sans-serif;
+        font-size: 1em;
+    }
+}
+    
+.Link{
+    text-decoration: none;
+    color:white;
+    font-family:'Nunito', sans-serif;
+}
+  
+@media (max-width: 400px){
+  
+    .Header{
+
+        grid-template-columns: 1fr;
+        grid-gap:1vh;
+        padding: 1vh;
+    }
+}

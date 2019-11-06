@@ -1,13 +1,13 @@
 import React from 'react';
-import './style/Login.scss';
-function Login(){
+import './style/Register.scss';
+function Register(){
     return(
         <div className="Container">
             <div className="sidebarleft"></div>
             
             
             <div className="content">
-                <h1 className="title">Login</h1>
+                <h1 className="title">Registrarse</h1>
                 
                     <form className="form">
 
@@ -20,6 +20,12 @@ function Login(){
 
                         </div>
 
+                        <div className="formField">
+
+                        <label className="label">Nombre </label>
+                        <input type="text" placeholder= "Nombre"></input>
+
+                        </div>
 
                         <div className="formField">
 
@@ -29,8 +35,7 @@ function Login(){
                         </div>
 
                         <div className="FormButtons">
-                            <label><input type="checkbox"/>Recuerdame</label>
-                            <button className="FormButton"> Login</button>
+                            <button type="sumbit" className="FormButton"> Registrarse </button>
                         </div>
                     </form>
                 
@@ -43,4 +48,4 @@ function Login(){
         </div>
     );
 }
-export default Login;
+export default Register;

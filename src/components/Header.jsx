@@ -35,7 +35,8 @@ function Header() {
             <div>
               
                 <Link  className="Link" to={'/login'}>
-                Login/SignUp
+                Login/
+                <Link className= "Link" to={'/registrar'}>SignUp</Link>
                 </Link>
             
             </div>  

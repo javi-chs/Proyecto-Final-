@@ -1,6 +1,17 @@
 import React from 'react';
 import './style/Login.scss';
-function Login(){
+import { connect } from 'react-redux';
+import {LoginUser} from '../actions/LoginUser'
+import { Component } from 'react';
+
+function mifunción(){
+    console.log("Esto funciona")
+}
+
+
+
+
+function Login(props){
     return(
         <div className="Container">
             <div className="sidebarleft"></div>
@@ -30,7 +41,10 @@ function Login(){
 
                         <div className="FormButtons">
                             <label><input type="checkbox"/>Recuerdame</label>
-                            <button className="FormButton"> Login</button>
+                            <button 
+                            className="FormButton"
+                            onClick={()=>mifunción()}
+                            > Login</button>
                         </div>
                     </form>
                 
@@ -43,4 +57,19 @@ function Login(){
         </div>
     );
 }
-export default Login;
+
+
+ const mapStateToProps = state =>({
+                id: state.user.id,
+                name: state.user.name,
+                mail: state.user.mail,
+                password: state.user.password
+ })
+
+ const mapDispatchToProps = dispatch =>({
+     LoginUser:(mail,password)=> dispatch(LoginUser(mail,password))
+ })
+ export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Login);

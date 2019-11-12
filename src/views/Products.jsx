@@ -1,23 +1,69 @@
-import React from 'react';
-import Card from 'react-bootstrap/Card';
-function Products(){
+import React, {Component} from "react";
+import axios from 'axios'
+import ProductsList from '../components/ProducstList'
+import getProducts from '../services/getProducts' 
+
+class Products extends Component{
+
+    constructor(props){
+        super(props);
+        this.state = {
+            products: [],
+            loaded:false
+            }
+             this.componentDidMount = ()=>{
+                console.log("EL componente de productos se ha montado")
+                this.getProducts();
+
+            }
+
+           
+
+
+            
+        }
+
+         
+     
+        async getProducts(){
+            const isloaded = this.state.loaded;
+            
+            if(!isloaded){
+                try{
+                    const results = await getProducts.getAllProducts();
+                    console.log("Lo que me devuelve la llamada")
+                    console.log(results)
+                    this.setState(
+                        {
+                            products: results,
+                            loaded:true 
+                        }
+                        );
+                }
+                catch(error){console.log(error)}
+                    }
+     }   
+
+
+
+
+render(){
+    
     return(
         <div>
             <h1>Productos</h1>
+           <ProductsList  products={this.state.products} ></ProductsList>
+           
 
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="holder.js/100px180" />
-                <Card.Body>
-                <Card.Title>Card Title</Card.Title>
-                <Card.Text>
-                    Some quick example text to build on the card title and make up the bulk of
-                    the card's content.
-                </Card.Text>
-                <button variant="primary">Go somewhere</button>
-                </Card.Body>
-            </Card>
-
+             
+           
         </div>
+
     );
 }
-export default Products;
+
+
+}
+export default Products
+
+

@@ -1,0 +1,23 @@
+.ProductsList{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap:7vh; 
+    justify-items: center;
+    align-items: center;
+    padding:5vh;
+}
+
+.Product{
+    display: grid;
+    width:30vw;
+    grid-template-rows: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    border: 1px solid black;
+    padding: 1rem;
+}
+
+.ProductLink{
+    border-top: 1px solid black;
+}
+

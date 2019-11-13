@@ -11,7 +11,9 @@ function ProductList({products}){
     return (
         <div className="ProductsList">
            {products.map((product)=>(
+                <Link className="Link" to= {"/producto/" + product.id}>
                <Card
+                    className="Product"
                     key={product.id}
                     hoverable
                     bordered={false}
@@ -22,15 +24,16 @@ function ProductList({products}){
                         alt= {product.name}
                         />
                     }
-              >
-                 <Link to= {"/producto/" + product.id}>
+              > 
+                
                   <Meta
                   className="MetaDescripcion"
                   title={product.name}
-                  description={product.description}
+                  description={product.price + " €"}
                   />
-                  </Link>
+                  
                </Card>
+               </Link>
                ))}
                
           </div>    

@@ -1,0 +1,37 @@
+.BrandBanner{
+ height: 10vh;
+ margin: 0;
+ padding:1vh;
+ background-color:#808080;
+ display:grid;
+ grid-template-columns: repeat(3,1fr);
+ justify-items: center;
+ grid-gap: 1vh;
+ & div{
+     height: 10vh;
+     width: 10vh;
+     }
+
+     & .Jordan{
+        background-image: url("../pictures/ProductsCat/Jordan1.png");
+        background-size: cover;
+        &:hover{
+            background-image: url("../pictures/ProductsCat/Jordan2.png");
+        }
+     }
+     & .Adidas{
+        background-image: url("../pictures/ProductsCat/Adidas1.png");
+        background-size: cover;
+        &:hover{
+            background-image: url("../pictures/ProductsCat/Adidas2.png");
+        }
+     }
+
+     & .Fila{
+        background-image: url("../pictures/ProductsCat/Fila1.png");
+        background-size: cover;
+        &:hover{
+            background-image: url("../pictures/ProductsCat/Fila2.png");
+        }
+    }
+}

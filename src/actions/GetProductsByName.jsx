@@ -1,8 +1,7 @@
 import getProducts from '../services/getProducts'
 
 export const GetProductsByName=(name)=>(dispatch)=>{
-    console.log("Valor del name")
-    console.log(name)
+   
     getProducts.getProductsByName(name)
     .then(response=>{
         dispatch({

@@ -11,7 +11,7 @@ async function getProductsByTag(ev,props){
   if(ev.key=="Enter"){
    
     var search = ev.target.value.trim()
-  
+   
      await props.ProductsByName(search)
     
   }
@@ -23,7 +23,6 @@ function Header(props) {
     <div className="Header">
        
        <div className="ContenedorInput">
-        <button onClick={()=>console.log(props)}>clickme</button>
            <input 
            type="text" 
            placeholder="Introduce un producto"
@@ -66,7 +65,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  ProductsByName: () => dispatch(GetProductsByName())
+  ProductsByName: (name) => dispatch(GetProductsByName(name))
 
 })
 export default connect(mapStateToProps,mapDispatchToProps)(Header);

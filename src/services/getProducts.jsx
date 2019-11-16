@@ -19,7 +19,7 @@ class getProducts {
     }
     async getProductsByName(myname){
        
-        const{data} = await axios.post("http://localhost:8080/api/v1/products/name",{name:"mi"});
+        const{data} = await axios.post("http://localhost:8080/api/v1/products/name",{name:myname});
         return data;
     }
 }

@@ -16,7 +16,8 @@ const store = createStore(RootReducers, applyMiddleware(thunk));
 ReactDOM.render(
 
 <Provider store={store}> 
-<App />
+
+    <App />
 
 
 </Provider>

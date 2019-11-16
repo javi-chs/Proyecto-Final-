@@ -1,57 +1,41 @@
 import React, {Component} from "react";
 import ProductsList from '../components/ProducstList'
-import getProducts from '../services/getProducts' 
 import './style/Products.scss';
-
+//REDUX//
+import { connect } from 'react-redux';
+import {GetProductsByBrand} from '../actions/GerProductsByBrand'
+import {GetProductsByName} from '../actions/GetProductsByName'
+import {GetAllProducts} from '../actions/GetAllProducts'
 class Products extends Component{
 
     constructor(props){
         super(props);
-        this.state = {
-            products: [],
-            loaded:false
-            }
+        
              this.componentDidMount = ()=>{
-                console.log("EL componente de productos se ha montado")
-                this.getProducts();
+                 this.loadProducts()
+                 
+                  
+               
+                   }
 
-            }
-
+                   this.componentDidUpdate=()=>{
+                  
+                   }
+           
     }
 
+
+        async loadProducts(){
+          await this.props.Allproducts();
+        }
+        
          
      
-        async getProducts(){
-            const isloaded = this.state.loaded;
-            
-            if(!isloaded){
-                try{
-                    const results = await getProducts.getAllProducts();
-                    this.setState(
-                        {
-                            products: results,
-                            loaded:true 
-                        }
-                        );
-                }
-                catch(error){console.log(error)}
-                    }
-     }   
+        async FilterByBrand(brand){
+            await this.props.ProductsByBrand(brand)
+        }
 
-     async FilterByBrand(Brand){
-       try{
-           const results = await getProducts.getProductByBrand(Brand);
-           this.setState(
-            {
-                products: results,
-                loaded:true 
-            }
-            );
-       }
-       catch(error){console.log(error)}
-     }
-
-
+     
 render(){
     
     return(
@@ -62,10 +46,8 @@ render(){
                 <div className="Fila"   onClick={()=>this.FilterByBrand("Fila")}/>
             </div>
             <h1>Productos</h1>
-           <ProductsList  products={this.state.products} ></ProductsList>
-           
-
              
+             <ProductsList/>
            
         </div>
 
@@ -74,6 +56,17 @@ render(){
 
 
 }
-export default Products
+const mapStateToProps = state => ({
+    productos: state.products.products
+  })
+  
+  const mapDispatchToProps = dispatch => ({
+    Allproducts: () => dispatch(GetAllProducts()),
+    ProductsByBrand: (brand) => dispatch(GetProductsByBrand(brand)),
+    ProductsByName: () => dispatch(GetProductsByName())
 
+  })
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(Products)
 

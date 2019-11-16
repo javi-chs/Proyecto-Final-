@@ -1,10 +1,12 @@
 import getProducts from '../services/getProducts'
 
-export const GetAllProducts=()=>(dispatch)=>{
-    getProducts.getAllProducts()
+export const GetProductsByName=(name)=>(dispatch)=>{
+    console.log("Valor del name")
+    console.log(name)
+    getProducts.getProductsByName(name)
     .then(response=>{
         dispatch({
-            type:"ALL_PRODUCTS",
+            type:"PRODUCTS_BY_NAME",
             payload:{
                 myproducts:response
                 

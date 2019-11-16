@@ -3,17 +3,32 @@ import './style/Header.scss';
 import 'font-awesome/css/font-awesome.min.css';
 import { FaUserAlt } from 'react-icons/fa';
 import { IconContext } from "react-icons";
-
 import {Link} from 'react-router-dom';
+import {GetProductsByName} from '../actions/GetProductsByName'
+import {connect} from 'react-redux'
 
+async function getProductsByTag(ev,props){
+  if(ev.key=="Enter"){
+   
+    var search = ev.target.value.trim()
+  
+     await props.ProductsByName(search)
+    
+  }
+  
+}
 
-function Header() {
+function Header(props) {
   return (
     <div className="Header">
        
        <div className="ContenedorInput">
-        
-           <input type="text" placeholder="Introduce un producto"/>
+        <button onClick={()=>console.log(props)}>clickme</button>
+           <input 
+           type="text" 
+           placeholder="Introduce un producto"
+           onKeyPress={(ev)=>getProductsByTag(ev,props)}
+           />
        
        </div>
       
@@ -46,5 +61,12 @@ function Header() {
     </div>
   );
 }
+const mapStateToProps = state => ({
+  productos: state.products.products
+})
 
-export default Header;
+const mapDispatchToProps = dispatch => ({
+  ProductsByName: () => dispatch(GetProductsByName())
+
+})
+export default connect(mapStateToProps,mapDispatchToProps)(Header);

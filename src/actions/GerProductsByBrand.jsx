@@ -1,10 +1,10 @@
-import getProducts from '../services/getProducts'
+import getProducts from '../services/getProducts';
 
-export const GetAllProducts=()=>(dispatch)=>{
-    getProducts.getAllProducts()
+export const GetProductsByBrand=(brand)=>(dispatch)=>{
+    getProducts.getProductByBrand(brand)
     .then(response=>{
         dispatch({
-            type:"ALL_PRODUCTS",
+            type:"PRODUCTS_BY_BRAND",
             payload:{
                 myproducts:response
                 

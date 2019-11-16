@@ -9,13 +9,19 @@
 
 
 
-
+.Product{
+    height: 400px;
+    overflow: hidden;
+}
 
 .ProductImage{
     max-width: 18vw;
+
+ 
+    
     &:hover{
-        transform: scale(1.020);
-        transition: transform 1.5s ease-in-out;
+        transform: scale(1.025);
+        transition: transform .50s ease-in-out;
     }
 }
 

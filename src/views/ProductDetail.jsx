@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import getProducts from '../services/getProducts';
 import './style/prueba.scss'
 import { Card } from 'antd';
+import CustomProductForm from '../components/CustomProductForm'
+
 const { Meta } = Card;
 
 
@@ -30,6 +32,9 @@ class ProductDetail extends Component{
             catch(error){ console.log(error)}
         }
     }
+    prueba(){
+        console.log(this.props)
+    }
 
     render(){
         const product = this.state.product;
@@ -57,6 +62,7 @@ class ProductDetail extends Component{
                                 }
                            >
                                <Meta
+                               className="MetaDescription"
                                 title={product.name}
                                 description={product.price + " €"}
                                />
@@ -66,8 +72,10 @@ class ProductDetail extends Component{
                         </div>
 
                         <div className="customizeProduct">
-                            <h2>Aqui iran los inputs del producto de los colores</h2>
-                            <h2>y los inputs del producto de las tallas</h2>
+
+                        
+                            <CustomProductForm/>
+
                         </div>
     
     
@@ -78,7 +86,13 @@ class ProductDetail extends Component{
                     
                     
                     <div className="BottomSection">
-    
+                        <div className="ProductDescription">
+                        <p>{product.description}</p>
+                        </div>
+                        <div>
+                         <h4>Me quieres comprar? Pulsa es botón, rey</h4>       
+                        <button className="Button" onClick={()=>this.prueba()}>Ir a comprar</button>
+                        </div>
                     </div>
     
                 </div>

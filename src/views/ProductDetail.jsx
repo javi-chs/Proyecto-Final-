@@ -3,7 +3,7 @@ import getProducts from '../services/getProducts';
 import './style/prueba.scss'
 import { Card } from 'antd';
 import CustomProductForm from '../components/CustomProductForm'
-
+import Header from "../components/Header"
 const { Meta } = Card;
 
 
@@ -42,7 +42,7 @@ class ProductDetail extends Component{
 
             return(
                 <div className="ProductDetail"> 
-                    
+                    <Header  props = {this.props}/>
                     
                     
                     <div className="TopSection">

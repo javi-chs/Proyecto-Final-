@@ -2,7 +2,7 @@ import React from 'react';
 import './style/Login.scss';
 import { connect } from 'react-redux';
 import {LoginUser} from '../actions/LoginUser'
-import { Component } from 'react';
+import Header from "../components/Header"
 
 function mifunción(){
     console.log("Esto funciona")
@@ -13,7 +13,10 @@ function mifunción(){
 
 function Login(props){
     return(
+       <div>
+           <Header props={props}/>
         <div className="Container">
+             
             <div className="sidebarleft"></div>
             
             
@@ -54,6 +57,7 @@ function Login(props){
             
             
             <div className="sidebarrigth"></div>
+        </div>
         </div>
     );
 }

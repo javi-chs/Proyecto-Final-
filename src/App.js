@@ -10,14 +10,15 @@ import Products from './views/Products';
 import ProductDetail from './views/ProductDetail';
 import NotFound from './views/NotFound';
 
+
 function App() {
   return (
     <div className="App">
    
     <BrowserRouter>
-        <Header/>
+    
         <Switch>
-
+        
           <Route exact path="/catalogo" component ={Products}/>
           <Route exact path="/producto/:id" component ={ProductDetail}/>
           <Route exact path="/login" component ={Login}/>

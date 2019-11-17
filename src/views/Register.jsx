@@ -1,7 +1,10 @@
 import React from 'react';
-import './style/Register.scss';
+//import './style/Register.scss';
+import Header from "../components/Header"
 function Register(){
     return(
+        <div>
+            <Header/>
         <div className="Container">
             <div className="sidebarleft"></div>
             
@@ -45,6 +48,7 @@ function Register(){
             
             
             <div className="sidebarrigth"></div>
+        </div>
         </div>
     );
 }

@@ -2,14 +2,15 @@
 .Footer{
     height: 15vh;
     width:100vw;
-    background-color:#073a77;
+    border-top: 3px solid  #cb2226;
+    background-color:#1e1e1e;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     
     & .textoFooter{
-        color:white;
+        color:#bca559;
         font-family: 'Nunito', sans-serif;
     }
 }

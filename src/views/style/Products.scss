@@ -1,3 +1,12 @@
+.ProductsPage{
+    background-color: #333843;
+}
+.Tittle{
+    color:#bca559;
+    padding:1vh;
+    border-bottom: 1.5px solid #bca559;
+}
+
 .BrandBanner{
  height: 10vh;
  margin: 0;
@@ -7,6 +16,7 @@
  grid-template-columns: repeat(3,1fr);
  justify-items: center;
  grid-gap: 1vh;
+ border-bottom:3px solid #cb2226;
  & div{
      height: 10vh;
      width: 10vh;

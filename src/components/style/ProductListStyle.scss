@@ -1,17 +1,18 @@
 .ProductsList{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap:2vh; 
+    grid-gap:3vh; 
     justify-items: center;
     align-items: center;
     padding:5vh;
+    
 }
 
 
 
 .Product{
     height: 400px;
-    overflow: hidden;
+   
 }
 
 .ProductImage{
@@ -20,8 +21,8 @@
  
     
     &:hover{
-        transform: scale(1.025);
-        transition: transform .50s ease-in-out;
+        transform: scale(1.01);
+        transition: transform 0.75s ease-in-out;
     }
 }
 
@@ -34,8 +35,17 @@
 
 .MetaDescripcion{
     
-    background-color: black;
-    color:white;
+    //background-color: black;
+    border:1.5px solid #bca559;
+    color:#bca559;
+    font-size: 1.1vw;
+    //font-weight: bold;
+    &:hover{
+        box-shadow: inset 0 -100px 0 -1px #bca559;
+        transition: box-shadow 1.5s ease-in-out;
+        color: #333843;
+        border: 2px solid #bca559;
+    }
 }
 @media (max-width: 750px){
   

@@ -40,14 +40,14 @@ render(props){
   console.log("esto vale props en el render")
     console.log(this.props)
     return(
-        <div>
+        <div className="ProductsPage">
           <Header props = {this.props}/>
             <div className="BrandBanner">
                 <div className="Jordan" onClick={()=>this.FilterByBrand("Jordan")}/>
                 <div className="Adidas" onClick={()=>this.FilterByBrand("Adidas")}/>
                 <div className="Fila"   onClick={()=>this.FilterByBrand("Fila")}/>
             </div>
-            <h1>Productos</h1>
+            <h1 className="Tittle">Productos</h1>
              
              <ProductsList/>
            

@@ -18,11 +18,8 @@ class Header extends Component{
         this.componentDidMount = ()=>{
               
             this.loadProducts()
-                
-             
-          
               }
-              this.componentDidUpdate=()=>{console.log(this.props)}
+              
     }
 
 

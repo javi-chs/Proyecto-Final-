@@ -12,10 +12,15 @@ class userServices {
    }
   
    async login(mymail, mypassword ){
-       const token = await axios.post("http://localhost:8080/api/v1/users/login/auth",{
+       console.log("Valor de las variables que paso")
+       console.log("mail:" + mymail)
+       console.log("pass:" + mypassword)
+       const {data} = await axios.post("http://localhost:8080/api/v1/users/login/auth",{
            mail:mymail,
            password:mypassword
        })
+       console.log(data)
+       return data;
    }
 }
 

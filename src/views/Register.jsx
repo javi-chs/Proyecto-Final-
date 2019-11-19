@@ -18,16 +18,15 @@ class Register extends Component{
                
             //Tendria que buscar si existe un jwt en localStorage y en caso de existir y ser el del usuario auntenticado
             //mostrar la misma interfaz con una mensaje de saludo. Estp es para poder crear otro usuario desde una sesion iniciada.
-            console.log("Estado del componente")
-            console.log(this.state)
+            
               }
         this.componentDidUpdate = ()=>{    
-                console.log("Estado del componente")
-                console.log(this.state)
+               
                   }
     }
     async UserRegistry(){
         await this.props.Registry(this.state.name,this.state.mail,this.state.password);
+        
       }
     render(props){
         return(

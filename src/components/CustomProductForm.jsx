@@ -15,7 +15,7 @@ function CustomProductFrom(producto){
               checked={true}
               className="form-check-input"
             />
-            Option 1
+            Color 1
           </label>
         </div>
 
@@ -27,7 +27,7 @@ function CustomProductFrom(producto){
               value="option2"
               className="form-check-input"
             />
-            Option 2
+            Color 2
           </label>
         </div>
 
@@ -39,15 +39,11 @@ function CustomProductFrom(producto){
               value="option3"
               className="form-check-input"
             />
-            Option 3
+            Color3
           </label>
         </div>
 
-        <div className="form-group">
-          <button className="btn btn-primary mt-2" type="submit">
-            Save
-          </button>
-        </div>
+        
 
       </form>
     );

@@ -1,8 +1,6 @@
 const INITIAL_STATE = {
-    id: 0,
-    name: '',
-    mail: '',
-    password: ''
+   token:"",
+   httpStatus:""
 }
 
 const user = (state = INITIAL_STATE, action) => {
@@ -10,10 +8,12 @@ const user = (state = INITIAL_STATE, action) => {
         case 'NEW_USER':
             return {
                 ...state,
-                id: action.payload.id,
-                name: action.payload.name,
-                mail: action.payload.mail,
-                password: action.payload.password
+                token: action.payload.token
+            }
+        case 'LOGIN_USER':
+            return {
+                ...state,
+                token: action.payload.token
             }
         default:
             return state;

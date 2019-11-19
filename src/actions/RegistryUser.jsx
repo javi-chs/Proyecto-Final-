@@ -1,14 +1,14 @@
 import userService from "../services/userServices"
 
 
-export const LoginUser = (mail, password) => (dispatch) => {
+export const RegistryUser = (name,mail, password) => (dispatch) => {
 
-    userService.login(mail,password)
+    userService.registry(name,mail,password)
     .then(response=>{
       dispatch({
-          type:"LOGIN_USER",
+          type:"NEW_USER",
           payload:{
-              mytoken:response
+              myhttpStatus:response
               
           }
       })

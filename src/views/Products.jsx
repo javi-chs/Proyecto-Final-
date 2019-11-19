@@ -35,7 +35,7 @@ class Products extends Component{
         }
 
      
-render(props){
+render(){
   
   console.log("esto vale props en el render")
     console.log(this.props)

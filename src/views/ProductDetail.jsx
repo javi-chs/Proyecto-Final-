@@ -90,7 +90,7 @@ class ProductDetail extends Component{
                         <p>{product.description}</p>
                         </div>
                         <div>
-                         <h4>Me quieres comprar? Pulsa es botón, rey</h4>       
+                         <h4>Comprar Producto</h4>       
                         <button className="Button" onClick={()=>this.prueba()}>Ir a comprar</button>
                         </div>
                     </div>

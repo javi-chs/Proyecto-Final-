@@ -1,6 +1,7 @@
 // Establecemos el estado inicial del reducer
 const INITIAL_STATE = {
     products:[],
+    page:"1"
 }
 
 // Aqui es donde establecemos el reducer, que recibe un estado, el inicial y una accion que lo cambiara.
@@ -9,7 +10,8 @@ const products = (state=INITIAL_STATE, action)=>{
                 case "ALL_PRODUCTS":{
                     return{
                         ...state,
-                        products:action.payload.myproducts
+                        products:action.payload.myproducts,
+                        page: action.payload.mypage
                             }
                     
                         }

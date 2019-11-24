@@ -1,9 +1,10 @@
 import axios from 'axios'
 
 class userServices {
-  
+   
+      
    async registry(myname, mymail, mypassword){
-       const result = await axios.post("http://localhost:8080/api/v1/users/registry",{
+       const result = await axios.post("http://localhost:8080/api/v1/registry",{
            name:myname,
            mail:mymail,
            password:mypassword
@@ -12,14 +13,12 @@ class userServices {
    }
   
    async login(mymail, mypassword ){
-       console.log("Valor de las variables que paso")
-       console.log("mail:" + mymail)
-       console.log("pass:" + mypassword)
-       const {data} = await axios.post("http://localhost:8080/api/v1/users/login/auth",{
+      
+       const {data} = await axios.post("http://localhost:8080/api/v1/login/auth",{
            mail:mymail,
            password:mypassword
        })
-       console.log(data)
+       
        return data;
    }
 }

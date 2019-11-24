@@ -3,7 +3,7 @@ import './style/Login.scss';
 import { connect } from 'react-redux';
 import {LoginUser} from '../actions/LoginUser'
 import Header from "../components/Header"
-import userService from "../services/userServices"
+
 
 
 class Login extends Component{
@@ -12,10 +12,11 @@ constructor(props){
     this.state={
         mail:"",
         password:"",
-        token:""
+        token:"",
+        remember:false
     }
     this.componentDidMount = ()=>{
-               
+       
         //Tendria que buscar si existe un jwt en localStorage y en caso de existir y ser el del usuario auntenticado
         //mostrar la misma interfaz con una mensaje de saludo. Estp es para poder crear otro usuario desde una sesion iniciada.
      
@@ -23,7 +24,7 @@ constructor(props){
      //console.log(this.props)
           }
     this.componentDidUpdate = ()=>{    
-      
+       
               }
 }
 /**async prueba(){
@@ -33,8 +34,16 @@ constructor(props){
     localStorage.setItem("token",token)
 }*/
 async UserLogin(){
-   await this.props.Login(this.state.mail,this.state.password)
+   await this.props.Login(this.state.mail,this.state.password,this.state.remember)
    
+   
+}
+rememberMe(){
+   this.setState({
+        ...this.state,
+        remember:!this.state.remember
+    })
+    
 }
 render(){
     return(
@@ -68,9 +77,10 @@ render(){
                         </div>
 
                         <div className="FormButtons">
-                            <label><input type="checkbox"/>Recuerdame</label>
+                            <label><input type="checkbox" onChange={()=>this.rememberMe()}/>Recuerdame</label>
                             <button 
                             className="FormButton"
+                            type="submit"
                             onClick={()=>this.UserLogin()}
                             > Login</button>
                         </div>
@@ -97,7 +107,7 @@ const mapStateToProps = state => ({
   
 const mapDispatchToProps = dispatch => ({
     
-   Login:(mail,password)=>dispatch(LoginUser(mail,password))
+   Login:(mail,password,remember)=>dispatch(LoginUser(mail,password,remember))
 
   })
   export default connect(mapStateToProps,mapDispatchToProps)(Login)

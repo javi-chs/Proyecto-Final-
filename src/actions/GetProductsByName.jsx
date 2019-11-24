@@ -1,8 +1,8 @@
 import getProducts from '../services/getProducts'
 
-export const GetProductsByName=(name)=>(dispatch)=>{
+export const GetProductsByName=(name,page)=>(dispatch)=>{
    
-    getProducts.getProductsByName(name)
+    getProducts.getProductsByName(name,page)
     .then(response=>{
         dispatch({
             type:"PRODUCTS_BY_NAME",

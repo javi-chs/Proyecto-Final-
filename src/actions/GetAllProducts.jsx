@@ -1,13 +1,13 @@
 import getProducts from '../services/getProducts'
 
-export const GetAllProducts=()=>(dispatch)=>{
-    getProducts.getAllProducts()
+export const GetAllProducts=(page)=>(dispatch)=>{
+    getProducts.getAllProducts(page)
     .then(response=>{
         dispatch({
             type:"ALL_PRODUCTS",
             payload:{
-                myproducts:response
-                
+                myproducts:response,
+                mypage:page
             }
         })
     })

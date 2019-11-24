@@ -12,40 +12,52 @@ const { Meta } = Card;
 
 function ProductList(props){
    const products = props.productos
+   
+   if(products!==null && props.productos.length!=0){
+     
     return (
-        
-<div className="ProductsList">
-           {products.map((product)=>(
-                <Link className="Link" to= {"/producto/" + product.id}>
-               <Card
+        <div className = "ProductsList">
+         {products.map((product)=>(
+           product.colors.map((color)=>(
+            <Link className="Link" to= {"/producto/" + product.id}>
+            <Card
                     className="Product"
-                    key={product.id}
+                    key={color.id}
                     hoverable
                     bordered={false}
                     cover={
                         <img
                         className="ProductImage"
-                        src = {product.img_src}
+                        src = {color.img_src}
                         alt= {product.name}
                         />
                     }
               > 
-                
-                  <Meta
+              <Meta
                   className="MetaDescripcion"
                   title={product.name}
                   description={product.price + " €"}
                   />
-                  
-               </Card>
-               </Link>
-               ))}
-               
-          </div>  
+
+              </Card>
+            </Link>
+           ))
+         ))}
+        </div>
+
                
                
              
-    );
+    );}
+    else{
+      return(
+        <div className = "ProductsNotFound">
+          <h1>No hemos encontrado los productos que buscas</h1>
+        </div>
+      
+
+      );
+}
 }
 const mapStateToProps = state => ({
     productos: state.products.products

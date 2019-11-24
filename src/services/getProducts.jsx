@@ -1,25 +1,25 @@
 import axios from 'axios'
 
 class getProducts {
-  
+    
    
-    async getAllProducts(){
-        const {data} = await axios.get("http://localhost:8080/api/v1/products")
+    async getAllProducts(page){ 
+        const {data} = await axios.get("http://localhost:8080/api/v1/products/page/"+ page)
         return data;
     }
     async getProductByID(id){
         const {data} = await axios.get("http://localhost:8080/api/v1/products/" + id)
-        console.log(data);
+       
         return data;
     }
 
-    async getProductByBrand(Brand){
-        const {data} = await axios.get("http://localhost:8080/api/v1/products/brands/"+Brand)
+    async getProductByBrand(Brand,page){ 
+        const {data} = await axios.get("http://localhost:8080/api/v1/products/brands/"+Brand+"/page/" + page)
         return data;
     }
-    async getProductsByName(myname){
+    async getProductsByName(myname,page){
        
-        const{data} = await axios.post("http://localhost:8080/api/v1/products/name",{name:myname});
+        const{data} = await axios.post("http://localhost:8080/api/v1/products/name/"+ page,{name:myname});
         return data;
     }
 }

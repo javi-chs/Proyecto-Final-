@@ -1,0 +1,23 @@
+.PagesContainer{
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-items: center;
+    & .pages{
+      
+        width:40vw;
+        color:#cb2226;
+        font-size:1.25rem;
+        font-weight: bold;
+        display:flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+
+        & .numbers{
+            color:#bca559;
+           font-weight: normal;
+           font-size:1.15rem;
+        }
+            }
+}

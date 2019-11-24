@@ -1,6 +1,7 @@
 const INITIAL_STATE = {
-   token:"",
-   httpStatus:""
+   token: localStorage.getItem("token") ||sessionStorage.getItem("token")||"",
+   httpStatus:"",
+   name:sessionStorage.getItem("userName")||""
 }
 
 const user = (state = INITIAL_STATE, action) => {
@@ -8,12 +9,15 @@ const user = (state = INITIAL_STATE, action) => {
         case 'NEW_USER':
             return {
                 ...state,
-                token: action.payload.token
+                //aki lo que tengo que hacer es mirar el HTTPSTATUS para saber si la op ha ido bien o mal
+                // si bien vuelvo a /productos o de la que venga
+                // si mal informar del fallo
             }
         case 'LOGIN_USER':
             return {
                 ...state,
-                token: action.payload.token
+                token: action.payload.mytoken,
+                name: action.payload.name
             }
         default:
             return state;

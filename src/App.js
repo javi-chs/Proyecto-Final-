@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import Header from './components/Header';
 import Footer from './components/Footer';
 import { BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 //Importamos las vistas.
@@ -9,6 +8,7 @@ import Login from './views/Login';
 import Products from './views/Products';
 import ProductDetail from './views/ProductDetail';
 import NotFound from './views/NotFound';
+import Purchase from "./views/Purchase"
 
 
 function App() {
@@ -23,6 +23,7 @@ function App() {
           <Route exact path="/producto/:id" component ={ProductDetail}/>
           <Route exact path="/login" component ={Login}/>
           <Route exact path="/registrar" component ={Register}/>
+          <Route exact path="/compra" component ={Purchase}/>
           <Redirect path='/' exact to='catalogo' />
           <Route exact path="*" component ={NotFound}/>
         

@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import getProducts from '../services/getProducts';
-import './style/prueba.scss'
+import './style/ProductDetail.scss'
 import { Card } from 'antd';
-import CustomProductForm from '../components/CustomProductForm'
 import Header from "../components/Header"
+import {connect} from "react-redux"
+import {chooseProduct} from "../actions/ChooseProduct"
+
 const { Meta } = Card;
 
 
@@ -13,9 +15,11 @@ class ProductDetail extends Component{
         this.state={
             product:null,
             productID: null,
-            loaded: false
+            loaded: false,
+            color:"",
+            size:""
         }
-        this.componentDidMount = this.getProduct;
+        this.componentDidMount = this.getProduct();
     }
 
     async getProduct(){
@@ -23,19 +27,47 @@ class ProductDetail extends Component{
         if(CurrentId !==this.state.productID && this.state.loaded !== true){
             try{
                const result =await getProducts.getProductByID(CurrentId)
+                
                 this.setState({
                     product:result,
                     productID: result.id,
-                    loaded: true
+                    loaded: true,
+                    color: result.colors[0].img_src,
+                    size: result.sizes[0].value
                 })
             }
             catch(error){ console.log(error)}
         }
     }
-    prueba(){
-        console.log(this.props)
+    setColor(color){
+        this.setState({
+            ...this.state,
+            color:color
+        })
     }
 
+    setSize(size){
+        this.setState({
+            ...this.state,
+            size:size
+        })
+    }
+    checkUser(){
+        //Si hay usuario y si el usuario es correcto o caducado y si no ir a login.
+        // Hay que hacer un endpoin en el backen que compruebe el token y meterlo en servicio de usuario
+        var product = this.state.product
+        var size = this.state.size
+        var color = this.state.color
+       var auth ="" // llamada al backen para autenticar y entoces en vez de mirar porps.user mirar auth
+        if(this.props.user===""){
+            this.props.history.push("/login")
+        }
+        else{ 
+            
+            this.props.ChooseProduct(product.name,product.price,size,color,product.description)
+            this.props.history.push("/compra")
+        }
+    }
     render(){
         const product = this.state.product;
         if(product){
@@ -56,7 +88,7 @@ class ProductDetail extends Component{
                                 cover={
                                     <img
                                     className="product_img"
-                                    src = {product.img_src}
+                                    src = {this.state.color}
                                     alt= {product.name}
                                     />
                                 }
@@ -73,9 +105,46 @@ class ProductDetail extends Component{
 
                         <div className="customizeProduct">
 
-                        
-                            <CustomProductForm/>
+                                <div>
+                                    
+                                    <form className="sizes">
 
+                                        {product.sizes.map((size)=>(
+                                            <label key={size.id} className="InputProduct">
+                                            <input
+                                            
+                                            type="radio"
+                                            value={size.value}
+                                            checked={this.state.size === size.value}
+                                            onChange={(ev)=>this.setSize(ev.target.value)}
+                                            className="form-check-input"
+                                            />
+                                            {size.value}
+                                        </label>
+                                        ))}
+                                    </form>  
+
+                                </div>
+                                
+                                <div>
+                                    <form className="colors">
+
+                                    {product.colors.map((color)=>(
+                                         <label key={color.id} className="InputProduct">
+                                         <input
+                                           type="radio"
+                                           value={color.img_src}
+                                           checked={this.state.color === color.img_src}
+                                           onChange={(ev)=>this.setColor(ev.target.value)}
+                                           className="form-check-input"
+                                         />
+                                         {color.name}
+                                       </label>
+                                    ))}
+                                    </form>
+                                </div>
+                            
+                                
                         </div>
     
     
@@ -90,8 +159,8 @@ class ProductDetail extends Component{
                         <p>{product.description}</p>
                         </div>
                         <div>
-                         <h4>Comprar Producto</h4>       
-                        <button className="Button" onClick={()=>this.prueba()}>Ir a comprar</button>
+                         <h4>Comprar Producto</h4>     
+                        <button className="Button" onClick={()=>this.checkUser()}>Comprar</button>
                         </div>
                     </div>
     
@@ -102,7 +171,8 @@ class ProductDetail extends Component{
 
         else {
             return(
-                <div>   
+                <div className="ProductDetail Error">   
+                     <Header  props = {this.props}/>
                     <h2>Cargando producto...</h2>
 
                 </div>
@@ -111,5 +181,16 @@ class ProductDetail extends Component{
     }
 
 }
+const mapStateToProps = state => ({
+    user: state.user.token,
+   
+  })
+  
+  const mapDispatchToProps = dispatch => ({
+    //Allproducts: (page) => dispatch(GetAllProducts(page)),
+    ChooseProduct:(name,price,size,color,description) =>dispatch(chooseProduct(name,price,size,color,description))
 
-export default ProductDetail;
+  })
+
+
+export default connect(mapStateToProps,mapDispatchToProps ) (ProductDetail);

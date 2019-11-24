@@ -1,16 +1,21 @@
 import userService from "../services/userServices"
 
 
-export const LoginUser = (mail, password) => (dispatch) => {
+export const LoginUser = (mail, password,remember) => (dispatch) => {
 
     userService.login(mail,password)
     .then(response=>{
-        localStorage.setItem("token",response)
-      dispatch({
+        
+        if(remember){ localStorage.setItem("token",response)}
+        else{ sessionStorage.setItem("token",response)}
+        var segments = response.split(".");
+        var data = JSON.parse(decodeURIComponent(escape(window.atob(segments[1]))));
+        sessionStorage.setItem("userName",data.sub)
+        dispatch({
           type:"LOGIN_USER",
           payload:{
-              mytoken:response
-              
+              mytoken:response,
+              name:data.sub
           }
       })
   })

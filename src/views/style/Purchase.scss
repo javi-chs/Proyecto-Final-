@@ -1,0 +1,118 @@
+
+.PurchasePage{
+    min-height: 65vh;
+    width:100vw;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    display:grid;
+    grid-template-rows: 1fr 4fr 2fr;
+    color:#bca559;
+    position:relative;
+    ::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background-image:url("../pictures/purchase/background-purchase.jpg");
+        background-size:cover;
+        filter:grayscale(100%);
+        z-index:-1;
+      }
+     & .PurchaseTittle{
+         width: 100vw;
+         height: 20vh;
+         background-color: #303030;
+     }
+
+     & .PurchaseProduct{
+        min-height: 43vh;
+        width: 100vw;
+       display:grid;
+       grid-template-columns: 1fr;
+       justify-items: center;
+        align-items: center;
+
+       & img{
+        max-height: 50vh;
+        border-radius:1vh;
+        box-shadow: 0px 0px 12px 3px #bca559;
+       }
+     }
+
+     & .ProductDefinition{
+        width:100vw;
+        height: 40vh;
+        border-top:4px solid #bca559;
+        background-color: rgba($color: #000000, $alpha: 0.7);
+        display:grid;
+        grid-template-rows: 1fr 2fr;
+
+        & .InfoGeneral{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            justify-items: center;
+            align-items: center;
+            grid-gap: 2vw;
+        }
+
+        & .Descriptcion{
+            display: grid;
+            grid-template-columns:1fr;
+            justify-items: center;
+            align-items: center;
+            padding-left:5vw;
+            padding-right:5vw;
+            
+        }
+     }
+}
+
+
+
+.PurchaseErrorPage{ 
+    min-height: 65vh;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+   align-items: center;
+   justify-items: center;
+    background-color: #333843;
+    
+    
+    & .message{
+        display: flex;
+        flex-direction: row;
+        height: 32.5vh;
+        width:100vw;
+        color:#bca559;
+        justify-content: center;
+        align-items: flex-end;
+    }
+    & .ButtonToLogin{
+        height: 32.5vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        & button{
+
+            height: 7vh;
+            width: 10vw;
+            font-size: 1.1vw;
+            font-weight: bold;
+            background-color: #333843;
+             color:#bca559;
+            border-radius: 5%;
+            border: 2px solid #bca559;
+            margin-top: 2vh;
+            
+            &:hover{
+                box-shadow: inset 0 -100px 0 -1px #bca559;
+                transition: box-shadow 1.5s ease-in-out;
+                color: #333843;
+                border: 2px solid #bca559;
+            }
+        }
+    }
+
+   
+}

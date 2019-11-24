@@ -2,6 +2,7 @@
     min-height: 70vh;
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
+    color:#bca559;
 }
 .sidebarleft{
     background-image: url("../pictures/login/shop_izq.jpg");
@@ -35,7 +36,13 @@
            
             & input{
                 width: 30vw;
-                
+                background-color: transparent;
+                border: 1px solid #bca559;
+                padding: 0.40rem;
+                color:#bca559;
+                &::placeholder{
+                    color:#bca559;
+                }
             }
         }
 

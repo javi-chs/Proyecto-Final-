@@ -23,7 +23,8 @@ class Header extends Component{
           userName:""
         }
         this.componentDidMount = ()=>{
-          
+          console.log("PROPS EN MOUNT")
+          console.log(this.props)
           if(this.checkIfLogin() && this.state.isLogged===false ){
             this.setState({
               isLogged:true,
@@ -36,7 +37,8 @@ class Header extends Component{
               }
               
         this.componentDidUpdate=()=>{
-          
+          console.log("props en u")
+          console.log(this.props)
         }      
     }
 
@@ -98,133 +100,240 @@ class Header extends Component{
         })
       }
       render(){
-        if(this.state.isLogged===true){
-          return (
-            <div className="miHeader">
-
-            <div className="atras">
-                <IconContext.Provider
-                     value={{
-                     color:"#bca559",
-                     size:"5vw"
-                      }}
-                >
-                    <FaChevronLeft
-                      onClick={()=>this.props.props.history.goBack()}
-                    />
-       
-               </IconContext.Provider>
-            </div>
-           
-            <div className="search">
-                <input 
-                    className="inputProduct"
-                    type="text" 
-                    placeholder="Introduce un producto"
-                    onKeyPress={(ev)=>this.getProductsByTag(ev)}
-                />
-            </div>
-
-
-            <div className="login">
-                      <div>
-                        <Link to={"/otrocomponente"}>
-                        
+          if(this.state.isLogged===true){
+            if(this.props.props.match.path ==="/catalogo"){
+              //Estoy logeado y en catalogo
+              return (
+                <div className="miHeader">
+    
+                    <div className="atras">
                         <IconContext.Provider
-                              value={{
-                              color:"#bca559",
-                              size:"5vw"
+                             value={{
+                             color:"#bca559",
+                             size:"5vw"
+                              }}
+                        >
+                            <FaChevronLeft
+                              onClick={()=>this.props.props.history.goBack()}
+                            />
+    
+                       </IconContext.Provider>
+                    </div>
+               
+                    <div className="search">
+                        <input 
+                            className="inputProduct"
+                            type="text" 
+                            placeholder="Introduce un producto"
+                            onKeyPress={(ev)=>this.getProductsByTag(ev)}
+                        />
+                    </div>
+    
+    
+                <div className="login">
+                          <div>
+                            <Link to={"/compra"}>
+                            
+                            <IconContext.Provider
+                                  value={{
+                                  color:"#bca559",
+                                  size:"5vw"
+                                    }}
+                              >
+                                  <FaUserCircle/>
+                    
+                            </IconContext.Provider>
+                            </Link>
+    
+                          </div>
+                          <div className="UserInfo">
+    
+                               <h5>
+                               Hola, {this.state.userName}
+    
+                               </h5>
+
+                               <button className="FormButton" onClick={()=>this.resetStateAndStorage()}>Salir</button>
+    
+                       </div>  
+                </div>
+    
+            </div>
+    
+              );
+            }
+            else {
+                //Estoy logeado y no en catalogo
+                return (
+                  <div className="miHeader">
+      
+                      <div className="atras">
+                          <IconContext.Provider
+                               value={{
+                               color:"#bca559",
+                               size:"5vw"
                                 }}
                           >
-                              <FaUserCircle/>
-                
-                        </IconContext.Provider>
-                        </Link>
-
+                              <FaChevronLeft
+                                onClick={()=>this.props.props.history.goBack()}
+                              />
+      
+                         </IconContext.Provider>
                       </div>
-          <div>
-           
-           <h5>
-           Hola, {this.state.userName}
-          
-           </h5>
-          <button className="FormButton" onClick={()=>this.resetStateAndStorage()}>Salir</button>
-       
-       </div>  
+                 
+                   
+                        <div className="search"></div>        
+      
+                  <div className="login">
+                            <div>
+                              <Link to={"/compra"}>
+                              
+                              <IconContext.Provider
+                                    value={{
+                                    color:"#bca559",
+                                    size:"5vw"
+                                      }}
+                                >
+                                    <FaUserCircle/>
+                      
+                              </IconContext.Provider>
+                              </Link>
+      
+                            </div>
+                            <div className="UserInfo">
+      
+                                 <h5>
+                                 Hola, {this.state.userName}
+      
+                                 </h5>
+                                 <button className="FormButton" onClick={()=>this.resetStateAndStorage()}>Salir</button>
+      
+                         </div>  
+                  </div>
+      
+              </div>
+      
+                );
+            }
+          }
+          else{
+            if(this.props.props.match.path ==="/catalogo"){
+              //No estoy logeado y en catalogo
+              return (
+                <div className="miHeader">
+    
+                        <div className="atras">
+                            <IconContext.Provider
+                                 value={{
+                                 color:"#bca559",
+                                 size:"5vw"
+                                  }}
+                            >
+                                <FaChevronLeft
+                                onClick={()=>this.props.props.history.goBack()}
+                                />
+    
+                           </IconContext.Provider>
+                        </div>
+               
+                        <div className="search">
+                            <input 
+                                className="inputProduct"
+                                type="text" 
+                                placeholder="Introduce un producto"
+                                onKeyPress={(ev)=>this.getProductsByTag(ev)}
+                            />
+                        </div>
+    
+    
+                        <div className="login">
+                            <div>
+                                <IconContext.Provider
+                                    value={{
+                                    color:"#bca559",
+                                    size:"5vw"
+                                    }}
+                                                      >
+                                    <FaUserCircle/>
+    
+                                </IconContext.Provider>
+    
+                            </div>
+                            <div>
+    
+                               <Link  className="Link" to={'/login'}>
+                               Login/</Link>
+                               <Link className= "Link" to={'/registrar'}>SignUp
+                               </Link>
+    
+                            </div>  
+                        </div>
+    
             </div>
+    
+              );
+            }
+            else {
+                //No estoy logeado y no en catalogo
+                return (
+                  <div className="miHeader">
+      
+                          <div className="atras">
+                              <IconContext.Provider
+                                   value={{
+                                   color:"#bca559",
+                                   size:"5vw"
+                                    }}
+                              >
+                                  <FaChevronLeft
+                                  onClick={()=>this.props.props.history.goBack()}
+                                  />
+      
+                             </IconContext.Provider>
+                          </div>
+                 
+                         
+                          <div className="search"></div>  
+      
+                          <div className="login">
+                              <div>
+                                  <IconContext.Provider
+                                      value={{
+                                      color:"#bca559",
+                                      size:"5vw"
+                                      }}
+                                                        >
+                                      <FaUserCircle/>
+      
+                                  </IconContext.Provider>
+      
+                              </div>
+                              <div>
+      
+                                 <Link  className="Link" to={'/login'}>
+                                 Login/</Link>
+                                 <Link className= "Link" to={'/registrar'}>SignUp
+                                 </Link>
+      
+                              </div>  
+                          </div>
+      
+              </div>
+      
+                );
+            }
+          }
 
-        </div>
-
-          );
         }
 
-        else{
-
-        }
-          return (
-            <div className="miHeader">
-
-            <div className="atras">
-                <IconContext.Provider
-                     value={{
-                     color:"#bca559",
-                     size:"5vw"
-                      }}
-                >
-                    <FaChevronLeft
-                    onClick={()=>this.props.props.history.goBack()}
-                    />
-       
-               </IconContext.Provider>
-            </div>
-           
-            <div className="search">
-                <input 
-                    className="inputProduct"
-                    type="text" 
-                    placeholder="Introduce un producto"
-                    onKeyPress={(ev)=>this.getProductsByTag(ev)}
-                />
-            </div>
 
 
-            <div className="login">
-                      <div>
-                      <IconContext.Provider
-                     value={{
-                     color:"#bca559",
-                     size:"5vw"
-                      }}
-                >
-                    <FaUserCircle/>
-       
-               </IconContext.Provider>
-
-                      </div>
-                      <div>
-           
-           <Link  className="Link" to={'/login'}>
-           Login/</Link>
-           <Link className= "Link" to={'/registrar'}>SignUp
-           </Link>
-       
-       </div>  
-            </div>
-
-        </div>
-
-          );
       }
-}
 
 
 
 
-
-
-
-
-const mapStateToProps = state => ({
+  const mapStateToProps = state => ({
     productos: state.products.products
   })
   

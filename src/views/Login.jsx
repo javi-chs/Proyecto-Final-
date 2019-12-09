@@ -17,22 +17,13 @@ constructor(props){
     }
     this.componentDidMount = ()=>{
        
-        //Tendria que buscar si existe un jwt en localStorage y en caso de existir y ser el del usuario auntenticado
-        //mostrar la misma interfaz con una mensaje de saludo. Estp es para poder crear otro usuario desde una sesion iniciada.
      
-        //console.log("Mount props")
-     //console.log(this.props)
           }
     this.componentDidUpdate = ()=>{    
        
               }
 }
-/**async prueba(){
-    const token = await userService.login("javi.cervello@gmail.com","astros_24")
-    console.log("Esto vale token")
-    console.log(token)
-    localStorage.setItem("token",token)
-}*/
+
 async UserLogin(){
    await this.props.Login(this.state.mail,this.state.password,this.state.remember)
    

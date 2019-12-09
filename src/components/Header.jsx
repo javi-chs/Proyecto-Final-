@@ -23,8 +23,7 @@ class Header extends Component{
           userName:""
         }
         this.componentDidMount = ()=>{
-          console.log("PROPS EN MOUNT")
-          console.log(this.props)
+          
           if(this.checkIfLogin() && this.state.isLogged===false ){
             this.setState({
               isLogged:true,
@@ -37,8 +36,7 @@ class Header extends Component{
               }
               
         this.componentDidUpdate=()=>{
-          console.log("props en u")
-          console.log(this.props)
+         
         }      
     }
 

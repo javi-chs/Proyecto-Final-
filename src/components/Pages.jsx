@@ -12,9 +12,22 @@ class Pages extends Component{
     async newPage(page){
        
         switch(this.props.searchType){
-            case "All":{await this.props.Allproducts(page)}
-            case "Brand":{await this.props.ProductsByBrand(this.props.searchBrand,page)}
-            case "Name":{await this.props.ProductsByName(this.props.searchTag,page)}
+            case "All":{
+                console.log("He salido por All en la pagina " + page)
+                console.log("El tipo de busqueda es por " + this.props.searchType)
+                console.log("Valor = " + this.props.searchBrand)
+                await this.props.Allproducts(page);break;}
+            case "Brand":{
+                console.log("He salido por Brand en la pagina " + page)
+                console.log("El tipo de busqueda es por " + this.props.searchType)
+                console.log("Valor = " + this.props.searchBrand)
+                await this.props.ProductsByBrand(this.props.searchBrand,page);break;}
+            case "Name":{
+                console.log("He salido por Name en la pagina " + page)
+                console.log("El tipo de busqueda es por " + this.props.searchType)
+                console.log("Valor = " + this.props.searchBrand)
+                await this.props.ProductsByName(this.props.searchTag,page);break;}
+
         }
         
     }

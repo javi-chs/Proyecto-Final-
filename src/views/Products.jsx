@@ -26,13 +26,15 @@ class Products extends Component{
         super(props);
         
              this.componentDidMount = ()=>{
-               
+                console.log("Productos Mount")
+                console.log(this.props)
                  this.loadProducts()
                 
                
                } 
                this.componentDidUpdate = ()=>{
-               
+                //console.log("Productos Update")
+                //console.log(this.props)
                 
               } 
      }

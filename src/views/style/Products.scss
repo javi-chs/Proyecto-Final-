@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Sedgwick+Ave+Display&display=swap');
+
+
 .ProductsPage{
     background-color: #333843;
     min-width:100vw;
@@ -6,6 +9,38 @@
     color:#bca559;
     padding:1vh;
     border-bottom: 1.5px solid #bca559;
+    font-family: 'Sedgwick Ave Display', cursive;
+    letter-spacing: 3px;
+    font-size: 7vh;
+    font-weight: bolder;
+}
+
+.TypeSearching{
+    width: 100vw;
+    height: 250px;
+    background-image: url("../pictures//Products\ View/JordanBanner.jpg");
+    background-size:cover;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    align-items:bottom;
+
+    & .TypeButton{
+        width: 15vw;
+        height: 7vh;
+        margin-top:25vh;
+        margin-left:4vw;
+        color:#bca559;
+        background-color: rgba($color: #000000, $alpha: 0.5);
+        border: 1px solid #bca559;
+        font-size: 1.5rem;
+        font-weight: bold;
+        &:hover{
+            transform: scale(1.2);
+            transition: transform 1s ease-in-out;
+        }
+
+    }
 }
 
 .BrandBanner{

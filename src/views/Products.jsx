@@ -60,12 +60,17 @@ render(){
     return(
         <div className="ProductsPage">
           <Header props = {this.props}/>
+         
             <div className="BrandBanner">
                 <div className="Jordan" onClick={()=>this.FilterByBrand("Jordan")}/>
                 <div className="Adidas" onClick={()=>this.FilterByBrand("Adidas")}/>
                 <div className="Fila"   onClick={()=>this.FilterByBrand("Fila")}/>
             </div>
-           
+            <div className="TypeSearching">
+              <button className="TypeButton">Camisetas</button>
+              <button className="TypeButton">Sudaderas</button>
+              <button className="TypeButton">Gorros</button>
+            </div>
             <h1 className="Tittle">Productos</h1>
              
              <ProductsList/>

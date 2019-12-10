@@ -10,7 +10,10 @@ class getPages{
         var numPages= await axios.get("http://localhost:8080/api/v1/products/pages/name/" + name)
         return numPages.data;
     }
-
+    async getNumPagesByCategory(category){
+        var numPages= await axios.get("http://localhost:8080/api/v1/products/pages/category/" + category)
+        return numPages.data;
+    }
     async getNumPagesByBrand(brand){
         var numPages= await axios.get("http://localhost:8080/api/v1/products/pages/brand/" + brand)
         return numPages.data;

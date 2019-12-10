@@ -27,7 +27,13 @@ const pages = (state=INITIAL_STATE, action)=>{
                             }
                             
                         }
-                
+                case "PAGES_BY_CATEGORY":{
+                    return{
+                        ...state,
+                        pages:action.payload.mypages
+                            }
+                            
+                        }
                 
                 default: return state;
         }

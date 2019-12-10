@@ -4,6 +4,7 @@ import {connect} from "react-redux"
 import {GetAllProducts} from "../actions/GetAllProducts"
 import {GetProductsByBrand} from "../actions/GerProductsByBrand"
 import {GetProductsByName} from "../actions/GetProductsByName"
+import {GetProductsByCategory} from "../actions/GetProductsByCategory"
 class Pages extends Component{
     constructor(props){
         super(props)
@@ -13,20 +14,18 @@ class Pages extends Component{
        
         switch(this.props.searchType){
             case "All":{
-                console.log("He salido por All en la pagina " + page)
-                console.log("El tipo de busqueda es por " + this.props.searchType)
-                console.log("Valor = " + this.props.searchBrand)
+               
                 await this.props.Allproducts(page);break;}
             case "Brand":{
-                console.log("He salido por Brand en la pagina " + page)
-                console.log("El tipo de busqueda es por " + this.props.searchType)
-                console.log("Valor = " + this.props.searchBrand)
+                
                 await this.props.ProductsByBrand(this.props.searchBrand,page);break;}
             case "Name":{
-                console.log("He salido por Name en la pagina " + page)
-                console.log("El tipo de busqueda es por " + this.props.searchType)
-                console.log("Valor = " + this.props.searchBrand)
+               
                 await this.props.ProductsByName(this.props.searchTag,page);break;}
+
+            case "Category":{
+               
+                await this.props.ProductsByCategory(this.props.searchCategory,page);break;}
 
         }
         
@@ -54,13 +53,15 @@ const mapStateToProps = state => ({
     searchType:state.searchType.searchType,
     searchTag:state.searchType.searchTag,
     searchBrand:state.searchType.searchBrand,
+    searchCategory: state.searchType.searchCategory
    
   })
   
   const mapDispatchToProps = dispatch => ({
     Allproducts: (page) => dispatch(GetAllProducts(page)),
     ProductsByBrand: (brand,page) => dispatch(GetProductsByBrand(brand,page)),
-    ProductsByName: (name, page) => dispatch(GetProductsByName(name,page))
+    ProductsByName: (name, page) => dispatch(GetProductsByName(name,page)),
+    ProductsByCategory:(category,page) => dispatch(GetProductsByCategory(category,page))
 
   })
 

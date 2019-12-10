@@ -1,7 +1,8 @@
 const INITIAL_STATE = {
     searchType:"",
     searchTag:"",
-    searchBrand:""
+    searchBrand:"",
+    searchCategory:""
 }
 
 
@@ -12,8 +13,8 @@ const searchType = (state=INITIAL_STATE, action)=>{
                 ...state,
                 searchType:action.payload.searchAll,
                 searchTag:action.payload.tag,
-                searchBrand:action.payload.Brand
-                
+                searchBrand:action.payload.Brand,
+                searchCategory:action.payload.Category
             }
             
         }
@@ -22,7 +23,8 @@ const searchType = (state=INITIAL_STATE, action)=>{
                 ...state,
                 searchType:action.payload.searchName,
                 searchTag:action.payload.tag,
-                searchBrand:action.payload.Brand
+                searchBrand:action.payload.Brand,
+                searchCategory:action.payload.Category
                             }
                             
                         }
@@ -31,7 +33,18 @@ const searchType = (state=INITIAL_STATE, action)=>{
                  ...state,
                  searchType:action.payload.searchBrand,
                  searchTag:action.payload.tag,
-                 searchBrand:action.payload.Brand
+                 searchBrand:action.payload.Brand,
+                 searchCategory:action.payload.Category
+                            }
+                            
+                        }
+        case "SEARCH_BY_CATEGORY":{
+            return{
+                 ...state,
+                 searchType:action.payload.searchCategory,
+                 searchTag:action.payload.tag,
+                 searchBrand:action.payload.Brand,
+                 searchCategory:action.payload.Category
                             }
                             
                         }

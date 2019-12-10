@@ -6,7 +6,8 @@ export const searchByName=(tag)=>(dispatch)=>{
         payload:{
             searchName:"Name",
             tag:tag,
-            Brand:""
+            Brand:"",
+            Category:""
         }
     })
 

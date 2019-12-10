@@ -22,6 +22,12 @@ class getProducts {
         const{data} = await axios.post("http://localhost:8080/api/v1/products/name/"+ page,{name:myname});
         return data;
     }
+
+    async getProductsByCategory(myCategory,page){
+        const {data} = await axios.get("http://localhost:8080/api/v1/products/category/"+myCategory+"/page/" + page)
+        return data;
+        
+    }
 }
 
 export default new getProducts();

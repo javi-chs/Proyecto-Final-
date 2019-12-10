@@ -29,6 +29,13 @@ const products = (state=INITIAL_STATE, action)=>{
                             }
                             
                         }
+                case "PRODUCTS_BY_CATEGORY":{
+                    return{
+                        ...state,
+                        products:action.payload.myproducts
+                            }
+                                    
+                        }
                 
                 
                 default: return state;

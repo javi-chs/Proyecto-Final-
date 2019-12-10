@@ -8,14 +8,17 @@ import { connect } from 'react-redux';
 import {GetProductsByBrand} from '../actions/GerProductsByBrand'
 import {GetProductsByName} from '../actions/GetProductsByName'
 import {GetAllProducts} from '../actions/GetAllProducts'
+import {GetProductsByCategory} from '../actions/GetProductsByCategory'
 //tipo de busqueda
 import {searchByAll} from "../actions/SearchByAll"
 import {searchByBrand} from "../actions/SearchByBrand"
 import {searchByName} from "../actions/SearchByName"
+import {searchByCategory} from "../actions/SearchByCategory"
 //paginas
 import {getPagesByAll} from "../actions/GetPagesByAll"
 import {getPagesByBrand} from "../actions/GetPagesByBrand"
 import {getPagesByName} from "../actions/GetPagesByName"
+import {getPagesByCategory} from "../actions/GetPagesByCategory"
 //COMPONENTS
 import Header from "../components/Header"
 import Pages from "../components/Pages"
@@ -51,7 +54,11 @@ class Products extends Component{
             await this.props.ProductsByBrand(brand,1)
         }
 
-   
+   async FilterByCategory(category){
+      this.props.SearchByCategory(category)
+      await this.props.GetPagesByCategory(category)
+      await this.props.ProductsByCategory(category,1)
+   }
 
      
 render(){
@@ -67,9 +74,9 @@ render(){
                 <div className="Fila"   onClick={()=>this.FilterByBrand("Fila")}/>
             </div>
             <div className="TypeSearching">
-              <button className="TypeButton">Camisetas</button>
-              <button className="TypeButton">Sudaderas</button>
-              <button className="TypeButton">Gorros</button>
+              <button className="TypeButton" onClick={()=>this.FilterByCategory("Camisetas")}>Camisetas</button>
+              <button className="TypeButton" onClick={()=>this.FilterByCategory("Sudaderas")}>Sudaderas</button>
+              <button className="TypeButton" onClick={()=>this.FilterByCategory("Gorros")}>Gorros</button>
             </div>
             <h1 className="Tittle">Productos</h1>
              
@@ -87,7 +94,8 @@ const mapStateToProps = state => ({
     page:state.products.page,
     searchType:state.searchType.searchType,
     searchTag:state.searchType.searchTag,
-    searchBrand:state.searchType.searchBrand
+    searchBrand:state.searchType.searchBrand,
+    searchCategory: state.searchType.searchCategory
   })
   
   const mapDispatchToProps = dispatch => ({
@@ -95,14 +103,17 @@ const mapStateToProps = state => ({
     Allproducts: (page) => dispatch(GetAllProducts(page)),
     ProductsByBrand: (brand,page) => dispatch(GetProductsByBrand(brand,page)),
     ProductsByName: (name,page) => dispatch(GetProductsByName(name,page)),
+    ProductsByCategory:(category,page) => dispatch(GetProductsByCategory(category,page)),
     //Acciones de tipo de busqueda
     SearchByBrand: (Brand)=> dispatch(searchByBrand(Brand)),
     SearchByAll: ()=>dispatch(searchByAll()),
     SearchByName:(tag)=> dispatch(searchByName(tag)),
+    SearchByCategory:(category) => dispatch(searchByCategory(category)),
     //Acciones de pages
     GetPagesByAll:()=> dispatch(getPagesByAll()),
     GetPagesByBrand:(brand)=>dispatch(getPagesByBrand(brand)),
-    GetPagesByName:(tag)=>dispatch(getPagesByName(tag))
+    GetPagesByName:(tag)=>dispatch(getPagesByName(tag)),
+    GetPagesByCategory:(category)=>dispatch(getPagesByCategory(category)),
   })
 
 

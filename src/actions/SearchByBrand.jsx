@@ -6,7 +6,8 @@ export const searchByBrand=(brand)=>(dispatch)=>{
         payload:{
             searchBrand:"Brand",
             tag:"",
-            Brand:brand
+            Brand:brand,
+            Category:""
         }
     })
 

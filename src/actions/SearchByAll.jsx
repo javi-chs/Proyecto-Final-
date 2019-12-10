@@ -8,7 +8,8 @@ export const searchByAll=()=>(dispatch)=>{
             payload:{
                 searchAll:"All",
                 tag:"",
-                Brand:""
+                Brand:"",
+                Category:""
             }
         })
    

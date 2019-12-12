@@ -3,7 +3,7 @@ import "./style/Header.scss"
 
 //ICONO
 import 'font-awesome/css/font-awesome.min.css';
-import { FaUserCircle, FaChevronLeft } from 'react-icons/fa';
+import { FaUserCircle, FaChevronLeft, FaHome } from 'react-icons/fa';
 import { IconContext } from "react-icons";
 //REDUX y Link
 import {Link} from 'react-router-dom';
@@ -23,7 +23,7 @@ class Header extends Component{
           userName:""
         }
         this.componentDidMount = ()=>{
-          
+          console.log(this.props.history)
           if(this.checkIfLogin() && this.state.isLogged===false ){
             this.setState({
               isLogged:true,
@@ -103,7 +103,21 @@ class Header extends Component{
               //Estoy logeado y en catalogo
               return (
                 <div className="miHeader">
+                    <div className="Home">
+                    <IconContext.Provider
+                             value={{
+                             color:"#bca559",
+                             size:"5vw"
+                              }}
+                        >
+                          <a href="http://localhost:3000/catalogo">
+                            <FaHome
+                             
+                            />
+                            </a>
     
+                       </IconContext.Provider>
+                    </div>
                     <div className="atras">
                         <IconContext.Provider
                              value={{
@@ -164,7 +178,21 @@ class Header extends Component{
                 //Estoy logeado y no en catalogo
                 return (
                   <div className="miHeader">
-      
+                       <div className="Home">
+                    <IconContext.Provider
+                             value={{
+                             color:"#bca559",
+                             size:"5vw"
+                              }}
+                        >
+                          <a href="http://localhost:3000/catalogo">
+                            <FaHome
+                             
+                            />
+                            </a>
+    
+                       </IconContext.Provider>
+                    </div>
                       <div className="atras">
                           <IconContext.Provider
                                value={{
@@ -219,7 +247,21 @@ class Header extends Component{
               //No estoy logeado y en catalogo
               return (
                 <div className="miHeader">
+                 <div className="Home">
+                    <IconContext.Provider
+                             value={{
+                             color:"#bca559",
+                             size:"5vw"
+                              }}
+                        >
+                          <a href="http://localhost:3000/catalogo">
+                            <FaHome
+                             
+                            />
+                            </a>
     
+                       </IconContext.Provider>
+                    </div>
                         <div className="atras">
                             <IconContext.Provider
                                  value={{
@@ -275,7 +317,21 @@ class Header extends Component{
                 //No estoy logeado y no en catalogo
                 return (
                   <div className="miHeader">
-      
+                         <div className="Home">
+                    <IconContext.Provider
+                             value={{
+                             color:"#bca559",
+                             size:"5vw"
+                              }}
+                        >
+                          <a href="http://localhost:3000/catalogo">
+                            <FaHome
+                             
+                            />
+                            </a>
+    
+                       </IconContext.Provider>
+                    </div>
                           <div className="atras">
                               <IconContext.Provider
                                    value={{

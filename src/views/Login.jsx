@@ -27,7 +27,6 @@ constructor(props){
 async UserLogin(){
    await this.props.Login(this.state.mail,this.state.password,this.state.remember)
    
-   
 }
 rememberMe(){
    this.setState({
